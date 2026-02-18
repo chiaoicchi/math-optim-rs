@@ -2,7 +2,7 @@
 /// Uses path splitting and union by size.
 ///
 /// # Complexity
-/// space: O(n)
+/// Space: O(n)
 #[derive(Clone, Debug)]
 pub struct Dsu {
     /// If negative, this node is a root and the absolute value is the size of the set.
