@@ -1,5 +1,5 @@
 {
-  description = "math_optim_rs environment";
+  description = "math-optim-rs environment";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -45,7 +45,7 @@
           RUST_BACKTRACE = "1";
 
           shellHook = ''
-            echo "math_optim_rs Environment (fenix)"
+            echo "math-optim-rs Environment (fenix)"
             echo "  Rust $(rustc --version)"
           '';
         };
