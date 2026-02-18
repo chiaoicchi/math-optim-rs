@@ -11,7 +11,7 @@
 
 ## Environment
 
-- Rust 1.89.0 (pinned via [fenix](https://github.com/nix-community/fenix))
+- Rust 1.89.0 (pinned via [rust-toolchain.toml](rust-toolchain.toml))
 - Nix flake for reproducible development environment
 
 ## Setup
