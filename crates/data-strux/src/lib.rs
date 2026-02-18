@@ -1,3 +1,2 @@
-mod disjoint_set;
-
-pub use disjoint_set::Dsu;
+pub mod disjoint_set;
+pub mod fenwick_tree;
