@@ -1,5 +1,14 @@
 # Math & Optimization Algorithms for Rust
 
+## Crates
+
+| Crate | Description |
+|-------|-------------|
+| algebrae | Algebra library |
+| graphia | Graph library |
+| geome | Geometry library |
+| data-strux | Data structure library |
+
 ## Environment
 
 - Rust 1.89.0 (pinned via [fenix](https://github.com/nix-community/fenix))
