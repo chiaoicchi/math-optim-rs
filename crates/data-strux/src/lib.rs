@@ -1,1 +1,3 @@
-pub mod disjoint_set;
+mod disjoint_set;
+
+pub use disjoint_set::Dsu;
