@@ -22,19 +22,10 @@
       let
         pkgs = import nixpkgs { inherit system; };
 
-        rustToolchain =
-          (fenix.packages.${system}.toolchainOf {
-            channel = "1.89.0";
-            sha256 = "sha256-+9FmLhAOezBZCOziO0Qct1NOrfpjNsXxc/8I0c7BdKE=";
-          }).withComponents
-            [
-              "cargo"
-              "clippy"
-              "rust-src"
-              "rust-analyzer"
-              "rustc"
-              "rustfmt"
-            ];
+        rustToolchain = fenix.packages.${system}.fromToolchainFile {
+          file = ./rust-toolchain.toml;
+          sha256 = "sha256-+9FmLhAOezBZCOziO0Qct1NOrfpjNsXxc/8I0c7BdKE=";
+        };
       in
       {
         devShells.default = pkgs.mkShell {

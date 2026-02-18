@@ -11,9 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - uses: cachix/install-nix-action@v27
-
-      - run: |
-          nix develop --command cargo build --workspace
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ""
+      - run: cargo build --workspace
 
