@@ -91,8 +91,10 @@ impl<S: Monoid> FenwickTree<S> {
     ///
     /// # Complexity
     /// Time: O(1)
-    pub fn pop(&mut self) -> Option<S> {
-        if self.is_empty() { None } else { self.0.pop() }
+    pub fn pop(&mut self) {
+        if !self.is_empty() {
+            self.0.pop();
+        }
     }
 
     /// Sets the value at index `i` to `op(a[i], x)`.
