@@ -17,3 +17,7 @@ version = "0.1.0"
 [[package]]
 name = "graphia"
 version = "0.1.0"
+
+[[package]]
+name = "seqenz"
+version = "0.1.0"
