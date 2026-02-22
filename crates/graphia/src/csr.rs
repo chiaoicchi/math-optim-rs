@@ -265,3 +265,34 @@ impl Csr<()> {
         }
     }
 }
+
+/// A trait for converting edge weights into distances for graph algorithms. For unweighted graphs
+/// (`Csr<()>`), edges are treated as having distance 1.
+pub trait EdgeWeight: Copy {
+    type Dist: Copy + Ord + Default + std::ops::Add<Output = Self::Dist>;
+    fn dist(self) -> Self::Dist;
+}
+
+impl EdgeWeight for () {
+    type Dist = usize;
+    #[inline(always)]
+    fn dist(self) -> usize {
+        1
+    }
+}
+
+macro_rules! impl_edge_weight {
+    ($($t:ty),*) => {
+        $(
+            impl EdgeWeight for $t {
+                type Dist = $t;
+                #[inline(always)]
+                fn dist(self) -> $t { self }
+            }
+        )*
+    };
+}
+
+impl_edge_weight!(
+    i8, i16, i32, i64, i128, isize, u8, u16, u32, u64, u128, usize
+);
