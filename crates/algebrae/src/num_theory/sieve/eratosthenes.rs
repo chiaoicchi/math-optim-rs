@@ -22,7 +22,7 @@ impl SieveEratosthenes {
                     break;
                 }
                 if (*t.add(i >> 6) >> (i & 63)) & 1 == 1 {
-                    let mut k = j * j >> 1;
+                    let mut k = (j * j) >> 1;
                     while k >> 6 < blocks {
                         *t.add(k >> 6) &= !(1 << (k & 63));
                         k += j;
@@ -106,6 +106,7 @@ impl SieveEratosthenes {
     /// # Complexity
     /// Time: O(1)
     #[inline]
+    #[allow(clippy::len_without_is_empty)]
     pub fn len(&self) -> usize {
         unsafe { *self.0.get_unchecked(self.0.len() - 1) as usize }
     }
