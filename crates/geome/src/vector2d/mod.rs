@@ -84,4 +84,3 @@ impl<T: Ord + std::ops::Mul<Output = T> + Copy + Default> Vector2D<T> {
             .then_with(|| (other.x() * self.y()).cmp(&(self.x() * other.y())))
     }
 }
-
