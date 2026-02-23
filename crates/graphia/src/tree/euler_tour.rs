@@ -137,6 +137,7 @@ impl EulerTour {
     ///
     /// # Complexity
     /// Time: O(1)
+    #[allow(clippy::len_without_is_empty)]
     #[inline(always)]
     pub fn len(&self) -> usize {
         self.tin.len()
