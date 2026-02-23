@@ -71,6 +71,14 @@ impl<S: Band> SparseTable<S> {
         }
     }
 
+    /// Returns `a[i]`.
+    ///
+    /// # Complexity
+    /// Time: O(1)
+    pub fn get(&self, i: usize) -> S {
+        unsafe { self.data.get_unchecked(i).clone() }
+    }
+
     /// Returns `op(a[l], ..., a[r - 1])`. Range must not be empty.
     ///
     /// # Complexity
