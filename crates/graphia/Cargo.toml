@@ -7,4 +7,3 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-data-strux = { git = "https://github.com/chiaoicchi/math-optim-rs", subdirectory = "crates/data-strux" }
