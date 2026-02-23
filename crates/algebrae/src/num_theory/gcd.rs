@@ -20,6 +20,14 @@ pub fn gcd(mut a: u64, mut b: u64) -> u64 {
     a << x.min(y)
 }
 
+/// Computes lcm(a, b).
+///
+/// # Complexity
+/// Time: O(log(a + b))
+pub fn lcm(a: u64, b: u64) -> u64 {
+    a / gcd(a, b) * b
+}
+
 /// Returns (g, x, y) such that ax + by = g = gcd(|a|, |b|). When both `a` and `b` are zero,
 /// returns (0, 0, 0).
 ///
