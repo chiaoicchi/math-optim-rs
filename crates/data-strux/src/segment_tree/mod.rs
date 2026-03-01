@@ -1,5 +1,7 @@
 mod base;
+mod dual;
 mod lazy;
 
 pub use base::SegmentTree;
-pub use lazy::{Action, LazySegmentTree};
+pub use dual::DualSegmentTree;
+pub use lazy::LazySegmentTree;
