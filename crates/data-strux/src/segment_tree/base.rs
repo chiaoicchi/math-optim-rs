@@ -1,4 +1,4 @@
-use crate::segment_tree::Monoid;
+use algebrae::algebra::Monoid;
 
 /// A segment tree structure.
 ///

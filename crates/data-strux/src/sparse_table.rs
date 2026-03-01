@@ -1,7 +1,4 @@
-/// A band trait.
-pub trait Band: Clone {
-    fn op(&self, other: &Self) -> Self;
-}
+use algebrae::algebra::Band;
 
 /// A sparse table data structure.
 ///
