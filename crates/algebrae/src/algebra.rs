@@ -45,3 +45,9 @@ impl<T: Rig + std::ops::Sub<Output = Self> + std::ops::Neg<Output = Self>> Ring 
 /// A field trait.
 pub trait Field: Ring + std::ops::Div<Output = Self> {}
 impl<T: Ring + std::ops::Div<Output = Self>> Field for T {}
+
+/// A set of actions on a set `S`.
+pub trait Action<S: Clone> {
+    /// Returns self acting on s.
+    fn act(&self, s: &S) -> S;
+}

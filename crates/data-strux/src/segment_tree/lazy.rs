@@ -1,21 +1,15 @@
-use algebrae::algebra::Monoid;
-
-/// An action of a monoid `F` on a monoid `S`.
-pub trait Action<S: Monoid>: Monoid {
-    /// Returns self acting on s.
-    fn act(&self, s: &S) -> S;
-}
+use algebrae::algebra::{Action, Monoid};
 
 /// A lazy segment tree structure.
 ///
 /// # Complexity
 /// Space: O(n)
-pub struct LazySegmentTree<S: Monoid, F: Action<S>> {
+pub struct LazySegmentTree<S: Monoid, F: Monoid + Action<S>> {
     data: Box<[S]>,
     lazy: Box<[F]>,
 }
 
-impl<S: Monoid, F: Action<S>> LazySegmentTree<S, F> {
+impl<S: Monoid, F: Monoid + Action<S>> LazySegmentTree<S, F> {
     /// Creates a new lazy segment tree with `n` elements, where all initialized to `S::id()`.
     ///
     /// # Complexity
