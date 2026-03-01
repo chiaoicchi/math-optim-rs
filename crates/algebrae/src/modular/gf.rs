@@ -230,8 +230,27 @@ macro_rules! impl_gf {
             MulAssign, mul_assign;
             DivAssign, div_assign;
         }
+
     };
 }
 
 impl_gf!(Gf, u64, u128);
 impl_gf!(Gf32, u32, u64);
+
+use crate::algebra::Rig;
+
+macro_rules! impl_gf_algebra {
+    ($gf:ident, $t:ty) => {
+        impl<const P: $t> Rig for $gf<P> {
+            fn zero() -> Self {
+                Self(0)
+            }
+            fn one() -> Self {
+                Self(1)
+            }
+        }
+    };
+}
+
+impl_gf_algebra!(Gf, u64);
+impl_gf_algebra!(Gf32, u32);

@@ -1,4 +1,10 @@
-use crate::segment_tree::{Action, Monoid};
+use algebrae::algebra::Monoid;
+
+/// An action of a monoid `F` on a monoid `S`.
+pub trait Action<S: Monoid>: Monoid {
+    /// Returns self acting on s.
+    fn act(&self, s: &S) -> S;
+}
 
 /// A lazy segment tree structure.
 ///

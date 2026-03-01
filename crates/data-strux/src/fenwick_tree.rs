@@ -1,24 +1,12 @@
-/// A commutative monoid trait.
-pub trait Monoid: Clone {
-    /// Returns the identity element of the monoid.
-    fn id() -> Self;
-    /// Performs the binary operation of the monoid.
-    fn op(&self, other: &Self) -> Self;
-}
-
-/// A commutative group trait.
-pub trait Group: Monoid {
-    /// Returns the inverse of the element.
-    fn inv(&self) -> Self;
-}
+use algebrae::algebra::AbelianGroup;
 
 /// A fenwick tree data structure.
 ///
 /// # Complexity
 /// Space: O(n)
-pub struct FenwickTree<S: Monoid>(Vec<S>);
+pub struct FenwickTree<S: AbelianGroup>(Vec<S>);
 
-impl<S: Monoid> FenwickTree<S> {
+impl<S: AbelianGroup> FenwickTree<S> {
     /// Creates a new fenwick tree with `n` elements, where all initialized to `S::id()`.
     ///
     /// # Complexity
@@ -118,56 +106,6 @@ impl<S: Monoid> FenwickTree<S> {
         }
     }
 
-    /// Returns `op(a[0], .., a[r - 1])`. When the range is empty, returns `S::id()`.
-    ///
-    /// # Complexity
-    /// O(log n)
-    pub fn prefix_fold(&self, mut r: usize) -> S {
-        debug_assert!(
-            r <= self.len(),
-            "index out of bounds: r={}, len={}",
-            r,
-            self.len(),
-        );
-        unsafe {
-            let mut res = self.0.get_unchecked(r).clone();
-            let d = self.0.as_ptr();
-            while r > 0 {
-                r &= r - 1;
-                res = S::op(&*d.add(r), &res);
-            }
-            res
-        }
-    }
-
-    /// Returns `op(a[0], ..., a[n - 1])`.
-    ///
-    /// # Complexity
-    /// O(log n)
-    pub fn all_fold(&self) -> S {
-        self.prefix_fold(self.len())
-    }
-
-    /// Returns the number of elements.
-    ///
-    /// # Complexity
-    /// Time: O(1)
-    #[inline(always)]
-    pub fn len(&self) -> usize {
-        self.0.len() - 1
-    }
-
-    /// Returns whether the fenwick tree is empty.
-    ///
-    /// # Complexity
-    /// Time: O(1)
-    #[inline(always)]
-    pub fn is_empty(&self) -> bool {
-        self.0.len() == 1
-    }
-}
-
-impl<S: Group> FenwickTree<S> {
     /// Sets the value at index `i` to `x`.
     ///
     /// # Complexity
@@ -195,6 +133,28 @@ impl<S: Group> FenwickTree<S> {
             self.len(),
         );
         S::op(&self.prefix_fold(i).inv(), &self.prefix_fold(i + 1))
+    }
+
+    /// Returns `op(a[0], .., a[r - 1])`. When the range is empty, returns `S::id()`.
+    ///
+    /// # Complexity
+    /// O(log n)
+    pub fn prefix_fold(&self, mut r: usize) -> S {
+        debug_assert!(
+            r <= self.len(),
+            "index out of bounds: r={}, len={}",
+            r,
+            self.len(),
+        );
+        unsafe {
+            let mut res = self.0.get_unchecked(r).clone();
+            let d = self.0.as_ptr();
+            while r > 0 {
+                r &= r - 1;
+                res = S::op(&*d.add(r), &res);
+            }
+            res
+        }
     }
 
     /// Returns `op(a[l], ..., a[r - 1])`. When range is empty, returns `S::id()`.
@@ -225,5 +185,31 @@ impl<S: Group> FenwickTree<S> {
             self.len(),
         );
         S::op(&self.prefix_fold(l).inv(), &self.prefix_fold(r))
+    }
+
+    /// Returns `op(a[0], ..., a[n - 1])`.
+    ///
+    /// # Complexity
+    /// O(log n)
+    pub fn all_fold(&self) -> S {
+        self.prefix_fold(self.len())
+    }
+
+    /// Returns the number of elements.
+    ///
+    /// # Complexity
+    /// Time: O(1)
+    #[inline(always)]
+    pub fn len(&self) -> usize {
+        self.0.len() - 1
+    }
+
+    /// Returns whether the fenwick tree is empty.
+    ///
+    /// # Complexity
+    /// Time: O(1)
+    #[inline(always)]
+    pub fn is_empty(&self) -> bool {
+        self.0.len() == 1
     }
 }

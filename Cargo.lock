@@ -9,6 +9,9 @@ version = "0.1.0"
 [[package]]
 name = "data-strux"
 version = "0.1.0"
+dependencies = [
+ "algebrae",
+]
 
 [[package]]
 name = "geome"
