@@ -17,8 +17,8 @@ impl<T: Copy> Matrix<T> {
     /// # Complexity
     /// Time: O(nm)
     pub fn from_vec(a: Vec<Vec<T>>) -> Self {
-        debug_assert!(a.len() > 0, "a is empty");
-        debug_assert!(a[0].len() > 0, "a is empty");
+        debug_assert!(!a.is_empty(), "a is empty");
+        debug_assert!(!a[0].is_empty(), "a is empty");
         debug_assert!(
             a.iter().all(|ai| ai.len() == a[0].len()),
             "a is not matrix shape"
@@ -37,8 +37,8 @@ impl<T: Copy> Matrix<T> {
     /// # Complexity
     /// Time: O(nm)
     pub fn from_slice(a: &[Vec<T>]) -> Self {
-        debug_assert!(a.len() > 0, "a is empty");
-        debug_assert!(a[0].len() > 0, "a is empty");
+        debug_assert!(!a.is_empty(), "a is empty");
+        debug_assert!(!a[0].is_empty(), "a is empty");
         debug_assert!(
             a.iter().all(|ai| ai.len() == a[0].len()),
             "a is not matrix shape"

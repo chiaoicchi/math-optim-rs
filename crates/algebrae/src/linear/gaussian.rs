@@ -113,16 +113,17 @@ impl<T: PartialEq + Field> Matrix<T> {
                 rank += 1;
             }
         }
-        let mut res: Vec<T> = Vec::with_capacity(n * n);
+        let mut res: Vec<std::mem::MaybeUninit<T>> = Vec::with_capacity(n * n);
         unsafe {
             res.set_len(n * n);
             let data = data.as_ptr();
-            let res = res.as_mut_ptr();
+            let res_ptr = res.as_mut_ptr() as *mut T;
             for i in 0..n {
-                std::ptr::copy_nonoverlapping(data.add(i * w + n), res.add(i * n), n);
+                std::ptr::copy_nonoverlapping(data.add(i * w + n), res_ptr.add(i * n), n);
             }
+            let res = std::mem::transmute::<Vec<std::mem::MaybeUninit<T>>, Vec<T>>(res);
+            Some(Matrix::from_flat(n, n, res))
         }
-        Some(Matrix::from_flat(n, n, res))
     }
 
     /// Reduces the matrix to row echelon form and returns the rank.
