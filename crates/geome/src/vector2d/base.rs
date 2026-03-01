@@ -63,7 +63,7 @@ impl<
     /// # Complexity
     /// Time: O(1)
     pub fn inner(&self, rhs: Self) -> T {
-        self.x() * self.y() + rhs.x() * rhs.y()
+        self.x() * rhs.x() + self.y() * rhs.y()
     }
 
     /// Returns outer product of vectors.
