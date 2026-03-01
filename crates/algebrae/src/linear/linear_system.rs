@@ -69,8 +69,13 @@ pub fn linear_system<T: PartialEq + Field>(a: &Matrix<T>, b: &[T]) -> Option<(Ve
 
     let rank = pivots.len();
 
-    if rank > 0 && *pivots.last().unwrap() == w {
-        return None;
+    unsafe {
+        let ptr = aug.data.as_ptr();
+        for row in rank..h {
+            if *ptr.add(row * (w + 1) + w) != T::zero() {
+                return None;
+            }
+        }
     }
 
     let mut sol = vec![T::zero(); w];
