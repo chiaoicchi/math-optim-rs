@@ -293,9 +293,9 @@ impl<S: Monoid, F: Action<S>> LazySegmentTree<S, F> {
     /// Returns `op(a[0], ..., a[n - 1])`.
     ///
     /// # Complexity
-    /// O(1)
+    /// O(n log n)
     pub fn all_fold(&self) -> S {
-        todo!();
+        self.range_fold(..)
     }
 
     /// Returns the number of elements.
