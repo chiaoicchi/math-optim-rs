@@ -12,6 +12,16 @@ pub trait Monoid: Clone {
     fn op(&self, rhs: &Self) -> Self;
 }
 
+/// A group trait.
+pub trait Group: Clone {
+    /// Returns the identity element of the group.
+    fn id() -> Self;
+    /// Performs the binary operation of the group.
+    fn op(&self, rhs: &Self) -> Self;
+    /// Returns the inverse of the element.
+    fn inv(&self) -> Self;
+}
+
 /// An Abelian group trait.
 pub trait AbelianGroup: Clone {
     /// Returns the identity element of the Abelian group.
