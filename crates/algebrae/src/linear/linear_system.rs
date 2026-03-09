@@ -1,6 +1,6 @@
 use crate::{algebra::Field, linear::Matrix};
 
-/// Solves linear system ax = b. Returns a particular solutiojn and a basis of the kernel or None
+/// Solves linear system ax = b. Returns a particular solution and a basis of the kernel or None
 /// if no solution exists.
 ///
 /// # Complexity
