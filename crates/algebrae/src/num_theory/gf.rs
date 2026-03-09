@@ -47,7 +47,7 @@ macro_rules! impl_gf_new_from_signed {
             impl<const P: u32> From<$src> for Gf<P> {
                 fn from(x: $src) -> Self {
                     if x < 0 {
-                        - Self::new((P as i128 - x as i128) as u32)
+                        - Self::new((x as i128).rem_euclid(P as i128) as u32)
                     } else {
                         Self::new(x as u32)
                     }
