@@ -5,9 +5,10 @@
 | Crate | Description |
 |-------|-------------|
 | algebrae | Algebra library |
-| graphia | Graph library |
-| geome | Geometry library |
 | data-strux | Data structure library |
+| geome | Geometry library |
+| graphia | Graph library |
+| seqenz | Sequence library |
 
 ## Environment
 
