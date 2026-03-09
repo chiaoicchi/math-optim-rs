@@ -23,7 +23,7 @@ impl IntBinom {
                 }
                 ptr.add((i * (i + 3)) >> 1).write(1);
             }
-            data.set_len((n + 1) * (n + 2) >> 1);
+            data.set_len(((n + 1) * (n + 2)) >> 1);
         }
         Self(data.into_boxed_slice())
     }
