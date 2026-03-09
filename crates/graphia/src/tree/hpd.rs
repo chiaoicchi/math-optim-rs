@@ -73,7 +73,7 @@ impl Hpd {
             head_ptr.add(root).write(root as u32);
             while let Some(u) = vec_queue.pop() {
                 pos_ptr.add(u as usize).write(t);
-                order_ptr.add(t as usize).write(u as u32);
+                order_ptr.add(t as usize).write(u);
                 t += 1;
                 let mut heavy = !0;
                 let mut max_size = 0;
