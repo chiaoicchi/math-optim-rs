@@ -25,6 +25,9 @@ pub fn gcd(mut a: u64, mut b: u64) -> u64 {
 /// # Complexity
 /// Time: O(log(a + b))
 pub fn lcm(a: u64, b: u64) -> u64 {
+    if a == 0 && b == 0 {
+        return 0;
+    }
     a / gcd(a, b) * b
 }
 

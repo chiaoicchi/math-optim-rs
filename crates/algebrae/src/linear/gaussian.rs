@@ -171,7 +171,7 @@ impl<T: PartialEq + Field> Matrix<T> {
         rank
     }
 
-    /// Reduces the matrix to reduced row echelon form and returns the pivot column indices.
+    /// Reduces the matrix to reduced row echelon form and returns the rank (usize).
     ///
     /// # Complexity
     /// Time: O(hw min(h, w))

@@ -1,5 +1,4 @@
-use crate::modular::pow_mod;
-use crate::num_theory::gcd;
+use crate::num_theory::{gcd, pow_mod};
 
 /// Returns whether given value is prime.
 ///
