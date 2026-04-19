@@ -1,6 +1,6 @@
 # Math & Optimization Algorithms for Rust
 
-Competitive programming library built on algebraic trait abstractions (Band, Monoid, Group, Ring, Field).
+Mathematical optimization library built on algebraic trait abstractions (Band, Monoid, Group, Ring, Field).
 
 Correctness is verified via [math-optim-rs-verify](https://github.com/chiaoicchi/math-optim-rs-verify).
 
