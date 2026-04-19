@@ -1,14 +1,18 @@
 # Math & Optimization Algorithms for Rust
 
+Competitive programming library built on algebraic trait abstractions (Band, Monoid, Group, Ring, Field).
+
+Correctness is verified via [math-optim-rs-verify](https://github.com/chiaoicchi/math-optim-rs-verify).
+
 ## Crates
 
-| Crate | Description |
-|-------|-------------|
-| algebrae | Algebra library |
-| data-strux | Data structure library |
-| geome | Geometry library |
-| graphia | Graph library |
-| seqenz | Sequence library |
+| Crate | Contents |
+|-------|----------|
+| algebrae | GF(p), Miller-Rabin, Pollard's rho, Eratosthenes sieve, NTT, FPS, Gaussian elimination |
+| data-strux | Segment tree (plain / lazy / dual), Fenwick tree, Sparse table, DSU (plain / weighted) |
+| geome | 2D point / vector, convex hull, argument sort |
+| graphia | CSR, Dinic's max flow, Kosaraju's SCC, LCA, Heavy path decomposition, Euler tour, tree diameter |
+| seqenz | LIS, Directed acyclic subsequence graph (DASG) |
 
 ## Environment
 
